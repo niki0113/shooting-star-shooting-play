@@ -93,6 +93,16 @@ body {
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
 <style>body { background-color: #0a0d24; }</style>
+<script>
+// ゲームはキーの既定の動きを止めるので、F11 だけはゲームに渡さず、ブラウザの全画面の切り替えに使わせる
+for (const type of ["keydown", "keyup"]) {
+	window.addEventListener(type, (event) => {
+		if (event.key === "F11" || event.code === "F11") {
+			event.stopImmediatePropagation();
+		}
+	}, true);
+}
+</script>
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -111,7 +121,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":22439120,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":22440080,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
